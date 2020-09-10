@@ -3,6 +3,7 @@ import 'package:sns/config/palette.dart';
 import 'package:sns/widgets/circle_button.dart';
 import 'package:sns/data/data.dart';
 import 'package:sns/models/models.dart';
+import 'package:sns/widgets/rooms.dart';
 import 'package:sns/widgets/widgets.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -29,9 +30,9 @@ class HomeScreen extends StatelessWidget {
         // 스크롤 시 상단 자동 숨김
         actions: [
           CircleButton(
-              icon: Icons.search,
-              iconSize: 30.0,
-              onPressed: () => print('Search'),
+            icon: Icons.search,
+            iconSize: 30.0,
+            onPressed: () => print('Search'),
           ),
           CircleButton(
             icon: MdiIcons.facebookMessenger,
@@ -39,7 +40,17 @@ class HomeScreen extends StatelessWidget {
             onPressed: () => print('Search'),
           ),
         ],
-      )
+      ),
+      SliverToBoxAdapter( // 상단 텍스트 입력 및 live, photo, room
+        child: CreatePostContainer(currentUser: currentUser),
+      ),
+      SliverPadding(
+        padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 5.0),
+        sliver: SliverToBoxAdapter(
+          child: Rooms(onlineUsers: onlineUsers),
+        ),
+      ),
+
     ]));
   }
 }
