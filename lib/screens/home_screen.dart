@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
         brightness: Brightness.light,
         backgroundColor: Colors.white,
         title: Text(
-          'TODAY SNS',
+          'facebook',
           style: const TextStyle(
             color: Palette.facebookBlue,
             fontSize: 28.0,
@@ -41,7 +41,8 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      SliverToBoxAdapter( // 상단 텍스트 입력 및 live, photo, room
+      SliverToBoxAdapter(
+        // 상단 텍스트 입력 및 live, photo, room
         child: CreatePostContainer(currentUser: currentUser),
       ),
       SliverPadding(
@@ -50,7 +51,15 @@ class HomeScreen extends StatelessWidget {
           child: Rooms(onlineUsers: onlineUsers),
         ),
       ),
-
+      SliverPadding(
+        padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 5.0),
+        sliver: SliverToBoxAdapter(
+          child: Stories(
+            currentUser: currentUser,
+            stories: stories,
+          ),
+        ),
+      ),
     ]));
   }
 }
