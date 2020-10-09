@@ -2,8 +2,14 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:sns/screens/home_screen.dart';
+import 'package:sns/widgets/widgets.dart';
 
 class NavScreen extends StatefulWidget {
+  @override
+  _NavScreenState createState() => _NavScreenState();
+}
+
+class _NavScreenState extends State<NavScreen> {
   final List<Widget> _screens = [
     HomeScreen(),
     Scaffold(),
@@ -28,10 +34,10 @@ class NavScreen extends StatefulWidget {
       length: _icons.length,
       child: Scaffold(
         body: _screens[_selectedIndex],
-        bottomNavigationBar: CustomTapBar(
+        bottomNavigationBar: CustomTabBar(
           icons: _icons,
           selectedIndex : _selectedIndex,
-          onTap: (indeX) => setState(() => _selectedIndex = index),
+          onTap: (index) => setState(() => _selectedIndex = index),
         ),
       ),
     );
