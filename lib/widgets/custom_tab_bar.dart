@@ -17,20 +17,31 @@ class CustomTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabBar(
       indicatorPadding: EdgeInsets.zero,
-        indicator: BoxDecoration(
-          border: Border(
-            top: BorderSide(
-              color: Palette.facebookBlue,
-              width: 3.0,
-            ),
+      indicator: BoxDecoration(
+        border: Border(
+          top: BorderSide(
+            color: Palette.facebookBlue,
+            width: 3.0,
           ),
         ),
-        tabs: icons
-            .map(
-              (e) => Tab(
-                icon: Icon(e),
-              ),
-            )
-            .toList());
+      ),
+      tabs: icons
+          .asMap()
+          .map((i, e) => MapEntry(
+                i,
+                Tab(
+                  icon: Icon(
+                    e,
+                    color: i == selectedIndex
+                        ? Palette.facebookBlue
+                        : Colors.black45,
+                    size: 30.0,
+                  ),
+                ),
+              ))
+          .values
+          .toList(),
+      onTap: onTap,
+    );
   }
 }
