@@ -61,7 +61,7 @@ class CustomAppBar extends StatelessWidget {
               child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              UserCart(user: currentUser),
+              UserCard(user: currentUser),
               const SizedBox(width: 12.0),
               CircleButton(
                 icon: Icons.search,

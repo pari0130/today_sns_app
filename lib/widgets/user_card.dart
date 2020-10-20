@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:sns/models/models.dart';
 import 'package:sns/widgets/profile_avatar.dart';
 
-class UserCart extends StatelessWidget {
+class UserCard extends StatelessWidget {
   final User user;
 
-  const UserCart({Key key, @required this.user}) : super(key: key);
+  const UserCard({Key key, @required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,12 @@ class UserCart extends StatelessWidget {
           const SizedBox(
             width: 6.0,
           ),
-          Text(
-            user.name,
-            style: const TextStyle(fontSize: 16.0),
+          Flexible(
+            child: Text(
+              user.name,
+              style: const TextStyle(fontSize: 16.0),
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ],
       ),
